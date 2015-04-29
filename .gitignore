@@ -27,7 +27,7 @@ build
 .idea/scopes/scope_settings.xml
 .idea/vcs.xml
 *.iml
- 
+ app/app.iml
 # OS-specific files
 .DS_Store
 .DS_Store?
