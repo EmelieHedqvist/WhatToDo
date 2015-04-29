@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< Updated upstream
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
@@ -104,6 +105,9 @@
       <Port>5050</Port>
     </configuration>
   </component>
+=======
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" />
+>>>>>>> Stashed changes
   <component name="masterDetails">
     <states>
       <state key="ProjectJDKs.UI">
