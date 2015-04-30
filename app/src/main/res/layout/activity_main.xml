@@ -13,12 +13,20 @@
         android:textColor="#FFFFFF"
         android:id="@+id/wtd"/>
 
-
     <View
 
         android:layout_width="fill_parent"
         android:layout_height="3dp"
         android:layout_below="@+id/wtd"
-        android:background="@android:color/white"/>
+        android:background="@android:color/white"
+        android:id="@+id/line"/>
+
+    // tänkte att man kan lägga en layout i layouten som vi kan
+    //placera knapparna i, i ett rutnät. Kanske funkar?
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+     </GridLayout>
 
 </RelativeLayout>
