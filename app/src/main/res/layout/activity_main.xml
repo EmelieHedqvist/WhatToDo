@@ -24,9 +24,17 @@
     // tänkte att man kan lägga en layout i layouten som vi kan
     //placera knapparna i, i ett rutnät. Kanske funkar?
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="match_parent"
+<<<<<<< Updated upstream
         android:layout_height="match_parent"
      />
+=======
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical" >
+        </LinearLayout>
+>>>>>>> Stashed changes
 
 </RelativeLayout>
