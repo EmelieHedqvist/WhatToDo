@@ -45,3 +45,9 @@ build
 ehthumbs.db
 Thumbs.db
 build/intermediates/model_data.bin
+
+app/src/main/res/layout/activity_main.xml
+
+app/src/main/res/values/color.xml
+
+app/src/main/res/layout/activity_main.xml
