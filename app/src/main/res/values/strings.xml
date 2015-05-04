@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">WhatToDo</string>
-
-    <string name="hello_world">Hello world!</string>
+    <string name="wtd">What To Do?</string>
     <string name="action_settings">Settings</string>
+<<<<<<< HEAD
     <string name="title_activity_display">DisplayActivity</string>
+=======
+
+>>>>>>> Layout
 </resources>
