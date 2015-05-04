@@ -1,14 +1,16 @@
 package com.emehed.emeliehedqvist.whattodo;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 
-public class SettingActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener {
+public class SettingActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 
     private SeekBar sb;
     private TextView tv;

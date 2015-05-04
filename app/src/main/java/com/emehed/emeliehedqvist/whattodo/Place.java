@@ -1,5 +1,4 @@
-package com.example.henriktaljedal.test;
-
+package com.emehed.emeliehedqvist.whattodo;
 /**
  * Created by henriktaljedal on 2015-04-29.
  */
