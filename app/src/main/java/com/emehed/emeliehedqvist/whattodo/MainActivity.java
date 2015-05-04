@@ -22,13 +22,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     String keyword = "";
     int radius;
     Place recommendedPlace;
-
+    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getMyLocation();
+
     }
 
 
@@ -79,18 +80,20 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     }
 
     public void createChoice(View view){
-        /* View button = view;
+        View button = view;
         if (button == findViewById(R.id.bar)){
             keyword = "bar";
-        } else if (button == findViewById(R.id.restaurant)){
+        } /*else if (button == findViewById(R.id.restaurant)){
             keyword = "restaurant";
         } else if (button == findViewById(R.id.nightClub)){
             keyword = "night_club";
-        }
+        }*/
+
         radius = 1000;
         SearcherDummy sd = new SearcherDummy();
-        recommendedPlace = sd.search(keyword, latitude, longitude, radius);            */
-
+        recommendedPlace = sd.search(keyword, latitude, longitude, radius);
+        tv = (TextView)findViewById(R.id.bar);
+        tv.setText(recommendedPlace.name);
     }
 
     @Override

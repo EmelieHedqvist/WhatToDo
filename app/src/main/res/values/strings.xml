@@ -3,10 +3,8 @@
     <string name="wtd1">What To Do?</string>
     <string name="wtd2">What To Do!</string>
     <string name="action_settings">Settings</string>
-<<<<<<< HEAD
     <string name="title_activity_display">DisplayActivity</string>
     <string name="title_activity_setting">SettingActivity</string>
-=======
->>>>>>> origin/knappar
+
 
 </resources>
