@@ -15,7 +15,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity implements LocationListener {
+public class MainActivity extends AppCompatActivity {
 
     double latitude = 0;
     double longitude = 0;
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getMyLocation();
+       // getMyLocation();
 
     }
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     }
 
-    public void getMyLocation(){
+    /* public void getMyLocation(){
         // Getting LocationManager object from System Service LOCATION_SERVICE
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             onLocationChanged(location);
         }
         locationManager.requestLocationUpdates(provider, 20000, 0, this);
-    }
+    } */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
 
     public void createChoice(View view){
         View button = view;
+
         if (button == findViewById(R.id.bar)){
             keyword = "bar";
         } /*else if (button == findViewById(R.id.restaurant)){
@@ -89,14 +90,15 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             keyword = "night_club";
         }*/
 
+        setContentView(R.layout.activity_display);
         radius = 1000;
         SearcherDummy sd = new SearcherDummy();
         recommendedPlace = sd.search(keyword, latitude, longitude, radius);
-        tv = (TextView)findViewById(R.id.bar);
+        tv = (TextView)findViewById(R.id.name);
         tv.setText(recommendedPlace.name);
     }
 
-    @Override
+   /* @Override
     public void onLocationChanged(Location location) {
         latitude = location.getLatitude();
         longitude = location.getLongitude();
@@ -115,5 +117,5 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     @Override
     public void onProviderDisabled(String s) {
 
-    }
+    }*/
 }

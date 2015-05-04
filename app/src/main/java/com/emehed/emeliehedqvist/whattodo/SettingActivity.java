@@ -22,7 +22,7 @@ public class SettingActivity extends AppCompatActivity implements SeekBar.OnSeek
         setContentView(R.layout.activity_setting);
         sb = (SeekBar)findViewById(R.id.seekBar);
         sb.setOnSeekBarChangeListener(this);
-        tv = (TextView)findViewById(R.id.range);
+        // tv = (TextView)findViewById(R.id.range);
     }
 
     @Override
