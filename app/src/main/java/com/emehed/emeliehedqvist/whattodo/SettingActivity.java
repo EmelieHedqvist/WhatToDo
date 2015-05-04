@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -13,8 +14,8 @@ import android.widget.TextView;
 public class SettingActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 
     private SeekBar sb;
-    private TextView tv;
     private int rangeValue;
+    private TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,7 @@ public class SettingActivity extends AppCompatActivity implements SeekBar.OnSeek
         setContentView(R.layout.activity_setting);
         sb = (SeekBar)findViewById(R.id.seekBar);
         sb.setOnSeekBarChangeListener(this);
-        // tv = (TextView)findViewById(R.id.range);
+        this.rangeValue = 0;
     }
 
     @Override
@@ -47,18 +48,27 @@ public class SettingActivity extends AppCompatActivity implements SeekBar.OnSeek
         return super.onOptionsItemSelected(item);
     }
 
+    public int getRangeValue(){
+        return this.rangeValue;
+    }
+
+
+
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
         rangeValue = i;
+        tv = (TextView)findViewById(R.id.distance);
+        tv.setText(rangeValue + " km");
+
     }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-        rangeValue = 10;
+        this.rangeValue = 10;
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        tv.setText("The range is: " + rangeValue);
+        this.rangeValue = 10;
     }
 }

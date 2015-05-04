@@ -1,6 +1,7 @@
 package com.emehed.emeliehedqvist.whattodo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -15,7 +16,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
+
 
     double latitude = 0;
     double longitude = 0;
@@ -28,34 +30,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       // getMyLocation();
 
     }
 
 
     public void switchLayout(View view){
         setContentView(R.layout.activity_display);
-
     }
-
-    /* public void getMyLocation(){
-        // Getting LocationManager object from System Service LOCATION_SERVICE
-        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
-        // Creating a criteria object to retrieve provider
-        Criteria criteria = new Criteria();
-
-        // Getting the name of the best provider
-        String provider = locationManager.getBestProvider(criteria, true);
-
-        // Getting Current Location From GPS
-        Location location = locationManager.getLastKnownLocation(provider);
-
-        if (location != null) {
-            onLocationChanged(location);
-        }
-        locationManager.requestLocationUpdates(provider, 20000, 0, this);
-    } */
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -98,24 +79,13 @@ public class MainActivity extends AppCompatActivity {
         tv.setText(recommendedPlace.name);
     }
 
-   /* @Override
-    public void onLocationChanged(Location location) {
-        latitude = location.getLatitude();
-        longitude = location.getLongitude();
+    public void settingView(View view){
+        Intent intent = new Intent(this, SettingActivity.class);
+        startActivity(intent);
+
+        //TextView dis = (TextView)findViewById(R.id.distance);
     }
 
-    @Override
-    public void onStatusChanged(String s, int i, Bundle bundle) {
 
-    }
 
-    @Override
-    public void onProviderEnabled(String s) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String s) {
-
-    }*/
 }
