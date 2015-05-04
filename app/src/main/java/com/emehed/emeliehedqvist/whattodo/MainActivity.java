@@ -61,11 +61,11 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-
+        rangeValue = 10;
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        tv.setText(rangeValue);
+        tv.setText("The range is: " + rangeValue);
     }
 }
