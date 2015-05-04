@@ -58,17 +58,16 @@ public class SettingActivity extends AppCompatActivity implements SeekBar.OnSeek
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
         rangeValue = i;
         tv = (TextView)findViewById(R.id.distance);
-        tv.setText(rangeValue + " km");
-
+        tv.setText(rangeValue + " m");
     }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-        this.rangeValue = 10;
+        rangeValue = rangeValue;
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        this.rangeValue = 10;
+        rangeValue = rangeValue;
     }
 }

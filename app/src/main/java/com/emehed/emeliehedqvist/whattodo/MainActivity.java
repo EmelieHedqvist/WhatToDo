@@ -17,14 +17,8 @@ import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity{
+    public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
 
-
-    double latitude = 0;
-    double longitude = 0;
-    String keyword = "";
-    int radius;
-    Place recommendedPlace;
-    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,29 +55,21 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void createChoice(View view){
+        Intent intent = new Intent(this, DisplayActivity.class);
         View button = view;
+        String message = "";
+        if (button == findViewById(R.id.bar)) {
+            message = "bar";
+        }
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
 
-        if (button == findViewById(R.id.bar)){
-            keyword = "bar";
-        } /*else if (button == findViewById(R.id.restaurant)){
-            keyword = "restaurant";
-        } else if (button == findViewById(R.id.nightClub)){
-            keyword = "night_club";
-        }*/
 
-        setContentView(R.layout.activity_display);
-        radius = 1000;
-        SearcherDummy sd = new SearcherDummy();
-        recommendedPlace = sd.search(keyword, latitude, longitude, radius);
-        tv = (TextView)findViewById(R.id.name);
-        tv.setText(recommendedPlace.name);
     }
 
     public void settingView(View view){
         Intent intent = new Intent(this, SettingActivity.class);
         startActivity(intent);
-
-        //TextView dis = (TextView)findViewById(R.id.distance);
     }
 
 

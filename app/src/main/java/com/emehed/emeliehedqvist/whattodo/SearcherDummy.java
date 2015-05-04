@@ -10,8 +10,8 @@ public class SearcherDummy {
         //SOM INPARAMETRAR TILL search-metoden REURNERAS EN INSTANS AV PLACE SOM INNEHÅLLER ALL INFO OM FRAMSLUMPAD PLATS!
 
         Place dummyPlace = new Place();
-        dummyPlace.name = "Yaki-Da";
-        dummyPlace.address = "Storgatan 47 411 38 Göteborg";
+        dummyPlace.name = "Golden-I";
+        dummyPlace.address = String.format("Storgatan 47 \n411 38 Göteborg");
         dummyPlace.rating = "5.0";
         dummyPlace.phone = "031-960200";
         dummyPlace.isOpen = true;
