@@ -9,20 +9,16 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 
-public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener {
+public class MainActivity extends ActionBarActivity {
 
-    private SeekBar sb;
-    private TextView tv;
-    private int rangeValue;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sb = (SeekBar)findViewById(R.id.seekBar);
-        sb.setOnSeekBarChangeListener(this);
-        tv = (TextView)findViewById(R.id.range);
+
 
     }
 
@@ -54,18 +50,11 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-        rangeValue = i;
+    public void createChoice(View view){
+        View button = view;
+        if (button == findViewById(R.id.imageButton1)){
+
+        }
     }
 
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-        rangeValue = 10;
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-        tv.setText("The range is: " + rangeValue);
-    }
 }
