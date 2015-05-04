@@ -5,14 +5,25 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener {
+
+    private SeekBar sb;
+    private TextView tv;
+    private int rangeValue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sb = (SeekBar)findViewById(R.id.seekBar);
+        sb.setOnSeekBarChangeListener(this);
+        tv = (TextView)findViewById(R.id.range);
+
     }
 
 
@@ -41,5 +52,20 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+        rangeValue = i;
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+        tv.setText(rangeValue);
     }
 }
