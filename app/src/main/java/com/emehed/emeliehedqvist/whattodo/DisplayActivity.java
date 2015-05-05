@@ -1,7 +1,9 @@
 package com.emehed.emeliehedqvist.whattodo;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,8 +17,8 @@ public class DisplayActivity extends AppCompatActivity {
 
     double latitude = 0;
     double longitude = 0;
+    int radius = 5000;
     String keyword = "";
-    int radius;
     Place recommendedPlace;
     TextView name;
     TextView phoneNumber;
@@ -37,8 +39,7 @@ public class DisplayActivity extends AppCompatActivity {
             keyword = "night_club";
         }*/
 
-        radius = 1000;
-        SearcherDummy sd = new SearcherDummy();
+            SearcherDummy sd = new SearcherDummy();
         recommendedPlace = sd.search(keyword, latitude, longitude, radius);
 
         name = (TextView)findViewById(R.id.name);
@@ -47,8 +48,19 @@ public class DisplayActivity extends AppCompatActivity {
         phoneNumber = (TextView)findViewById(R.id.number);
         phoneNumber.setText(recommendedPlace.phone);
 
+
+        SharedPreferences settings = getSharedPreferences("values",
+                Context.MODE_PRIVATE);
+        radius = settings.getInt("radius", 0);
+
         address = (TextView)findViewById(R.id.address);
-        address.setText(recommendedPlace.address);
+        address.setText(radius + "km");
+    }
+
+
+    public void setRadius(int radius){
+        this.radius = radius;
+
     }
 
     @Override

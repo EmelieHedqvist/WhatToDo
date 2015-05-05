@@ -1,6 +1,8 @@
 package com.emehed.emeliehedqvist.whattodo;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,13 +19,23 @@ public class SettingActivity extends AppCompatActivity implements SeekBar.OnSeek
     private int rangeValue;
     private TextView tv;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         sb = (SeekBar)findViewById(R.id.seekBar);
         sb.setOnSeekBarChangeListener(this);
-        this.rangeValue = 0;
+        SharedPreferences settings = getSharedPreferences("values",
+                Context.MODE_PRIVATE);
+        int radius = settings.getInt("radius", 0);
+        sb.setProgress(radius);
+        this.rangeValue = radius;
+
+
+
+
     }
 
     @Override
@@ -48,10 +60,6 @@ public class SettingActivity extends AppCompatActivity implements SeekBar.OnSeek
         return super.onOptionsItemSelected(item);
     }
 
-    public int getRangeValue(){
-        return this.rangeValue;
-    }
-
 
 
     @Override
@@ -59,6 +67,11 @@ public class SettingActivity extends AppCompatActivity implements SeekBar.OnSeek
         rangeValue = i;
         tv = (TextView)findViewById(R.id.distance);
         tv.setText(rangeValue + " m");
+        SharedPreferences settings = getSharedPreferences("values",
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt("radius", rangeValue);
+        editor.commit();
     }
 
     @Override

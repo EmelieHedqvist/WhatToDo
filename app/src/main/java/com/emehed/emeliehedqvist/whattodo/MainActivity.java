@@ -2,6 +2,7 @@ package com.emehed.emeliehedqvist.whattodo;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -16,19 +17,20 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
 
+    int radius;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        radius = 5000;
     }
 
 
-    public void switchLayout(View view){
+    public void switchLayout(View view) {
         setContentView(R.layout.activity_display);
     }
 
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    public void createChoice(View view){
+    public void createChoice(View view) {
         Intent intent = new Intent(this, DisplayActivity.class);
         View button = view;
         String message = "";
@@ -67,11 +69,10 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-    public void settingView(View view){
+    public void settingView(View view) {
         Intent intent = new Intent(this, SettingActivity.class);
         startActivity(intent);
     }
 
-
-
 }
+
