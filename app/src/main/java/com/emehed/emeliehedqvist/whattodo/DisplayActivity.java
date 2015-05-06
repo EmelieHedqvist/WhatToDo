@@ -54,7 +54,7 @@ public class DisplayActivity extends AppCompatActivity {
         radius = settings.getInt("radius", 0);
 
         address = (TextView)findViewById(R.id.address);
-        address.setText(radius + "km");
+        address.setText(recommendedPlace.address);
     }
 
 
