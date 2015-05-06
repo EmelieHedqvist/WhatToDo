@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/largeSettingIcon"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/settings1" />
+        android:background="@drawable/settings" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
         android:id="@+id/smallMapIcon"
         android:layout_below="@id/largeSettingIcon"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/star_icon" />
+        android:background="@drawable/map" />
 
     <SeekBar
         android:layout_width="wrap_content"

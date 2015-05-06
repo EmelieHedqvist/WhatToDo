@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, DisplayActivity.class);
         View button = view;
         String message = "";
-        if (button == findViewById(R.id.bar)) {
+        if (button == findViewById(R.id.barbutton)) {
             message = "bar";
         }
         intent.putExtra(EXTRA_MESSAGE, message);

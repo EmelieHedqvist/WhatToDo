@@ -45,7 +45,7 @@ public class DisplayActivity extends AppCompatActivity {
         name = (TextView)findViewById(R.id.name);
         name.setText(recommendedPlace.name);
 
-        phoneNumber = (TextView)findViewById(R.id.number);
+        phoneNumber = (TextView)findViewById(R.id.phonenumber);
         phoneNumber.setText(recommendedPlace.phone);
 
 
