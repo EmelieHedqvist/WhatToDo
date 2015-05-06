@@ -30,9 +30,7 @@
         android:orientation="vertical"
         android:layout_below="@+id/line"
         android:columnCount="6"
-        android:rowCount="4"
-
-        >
+        android:rowCount="4">
 
         <ImageButton
 
