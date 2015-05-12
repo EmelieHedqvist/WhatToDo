@@ -1,25 +1,26 @@
 package com.emehed.emeliehedqvist.whattodo;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.ActionBarActivity;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 
-public class DisplayActivity extends AppCompatActivity {
+public class DisplayActivity extends AppCompatActivity implements AsyncResponse, LocationListener{
 
     double latitude = 0;
     double longitude = 0;
-    int radius = 5000;
+    int radius = 1000;
     String keyword = "";
-    Place recommendedPlace;
+    WPlace recommendedPlace;
     TextView name;
     TextView phoneNumber;
     TextView address;
@@ -28,8 +29,20 @@ public class DisplayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
+
+        name = (TextView)findViewById(R.id.name);
+        phoneNumber = (TextView)findViewById(R.id.phonenumber);
+        address = (TextView)findViewById(R.id.address);
+
+        getLocation();
+
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+
+        SharedPreferences settings = getSharedPreferences("values",
+                Context.MODE_PRIVATE);
+        radius = settings.getInt("radius", 0);
+
 
         if (message == "bar"){
             keyword = "bar";
@@ -39,22 +52,10 @@ public class DisplayActivity extends AppCompatActivity {
             keyword = "night_club";
         }*/
 
-            SearcherDummy sd = new SearcherDummy();
-        recommendedPlace = sd.search(keyword, latitude, longitude, radius);
+        PlaceFinder pf = new PlaceFinder();
+        PlaceFinder.DownloadWebpage dw = pf.search(keyword, latitude, longitude, radius);
+        dw.delegate=this;
 
-        name = (TextView)findViewById(R.id.name);
-        name.setText(recommendedPlace.name);
-
-        phoneNumber = (TextView)findViewById(R.id.phonenumber);
-        phoneNumber.setText(recommendedPlace.phone);
-
-
-        SharedPreferences settings = getSharedPreferences("values",
-                Context.MODE_PRIVATE);
-        radius = settings.getInt("radius", 0);
-
-        address = (TextView)findViewById(R.id.address);
-        address.setText(recommendedPlace.address);
     }
 
 
@@ -83,5 +84,58 @@ public class DisplayActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void processFinish(WPlace place) {
+        recommendedPlace = place;
+
+        name = (TextView)findViewById(R.id.name);
+        name.setText(recommendedPlace.name);
+
+        phoneNumber = (TextView)findViewById(R.id.phonenumber);
+        phoneNumber.setText(recommendedPlace.phone);
+
+        address = (TextView)findViewById(R.id.address);
+        address.setText(recommendedPlace.address);
+
+    }
+    public void getLocation(){
+        // Getting LocationManager object from System Service LOCATION_SERVICE
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        // Creating a criteria object to retrieve provider
+        Criteria criteria = new Criteria();
+
+        // Getting the name of the best provider
+        String provider = locationManager.getBestProvider(criteria, true);
+
+        // Getting Current Location From GPS
+        Location location = locationManager.getLastKnownLocation(provider);
+
+        if (location != null) {
+            onLocationChanged(location);
+        }
+        locationManager.requestLocationUpdates(provider, 20000, 0, this);
+    }
+    @Override
+    public void onLocationChanged(Location location) {
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
     }
 }
