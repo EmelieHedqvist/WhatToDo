@@ -11,7 +11,7 @@
     <TextView android:text="@string/wtd2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/white"
         android:id="@+id/wtd"
         android:textSize="38sp"
         android:fontFamily="sans-serif-light"
@@ -26,8 +26,9 @@
         android:id="@+id/line"/>
 
     <GridLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:orientation="vertical"
         android:columnCount="3"
         android:rowCount="5"
@@ -37,8 +38,8 @@
         android:alignmentMode="alignMargins">
 
         <ImageView
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:background="@drawable/drinks"
             android:id="@+id/drinks"
             android:layout_gravity="center"
@@ -53,7 +54,7 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="38sp"
             android:fontFamily="sans-serif-light"
             android:layout_gravity="center"
@@ -64,27 +65,28 @@
             />
 
         <ImageButton
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/phone"
             android:id="@+id/phone"
             android:layout_gravity="right"
             android:layout_column="0"
             android:layout_row="2"
-            android:layout_margin="5dp"
+            android:layout_marginRight="10dp"
             />
 
         <TextView
             android:id="@+id/phonenumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="30sp"
             android:fontFamily="sans-serif-light"
             android:layout_gravity="center"
             android:layout_column="1"
             android:layout_columnSpan="2"
             android:layout_row="2"
+
             />
         <ImageButton
             android:layout_width="70dp"
@@ -92,13 +94,14 @@
             android:background="@drawable/map"
             android:layout_column="0"
             android:layout_row="3"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"/>
         <TextView
             android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FFFFFF"
-            android:textSize="30sp"
+            android:textColor="@color/white"
+            android:textSize="30dp"
             android:fontFamily="sans-serif-light"
             android:layout_gravity="center"
             android:id="@+id/address"
@@ -108,10 +111,15 @@
             />
         <ImageButton
             android:background="@drawable/social"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
             android:id="@+id/social"
             android:layout_column="0"
             android:layout_row="4"
             android:layout_columnSpan="3"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+
+            />
         </GridLayout>
 </RelativeLayout>
