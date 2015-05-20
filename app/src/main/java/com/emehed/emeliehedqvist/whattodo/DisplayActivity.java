@@ -31,9 +31,9 @@ public class DisplayActivity extends AppCompatActivity implements AsyncResponse,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
 
-        name = (TextView)findViewById(R.id.name);
-        phoneNumber = (TextView)findViewById(R.id.phonenumber);
-        address = (TextView)findViewById(R.id.address);
+        name = (TextView) findViewById(R.id.name);
+        phoneNumber = (TextView) findViewById(R.id.phonenumber);
+        address = (TextView) findViewById(R.id.address);
 
         getLocation();
 
@@ -45,10 +45,10 @@ public class DisplayActivity extends AppCompatActivity implements AsyncResponse,
         radius = settings.getInt("radius", 0);
 
 
-        if (message.equals("bar")){
+        if (message.equals("bar")) {
             keyword = "bar";
         }
-        if (message.equals("restaurant")){
+        if (message.equals("restaurant")) {
             keyword = "restaurant";
         }
 
@@ -60,13 +60,7 @@ public class DisplayActivity extends AppCompatActivity implements AsyncResponse,
 
         PlaceFinder pf = new PlaceFinder();
         PlaceFinder.DownloadWebpage dw = pf.search(keyword, latitude, longitude, radius);
-        dw.delegate=this;
-
-    }
-
-
-    public void setRadius(int radius){
-        this.radius = radius;
+        dw.delegate = this;
 
     }
 
@@ -108,8 +102,9 @@ public class DisplayActivity extends AppCompatActivity implements AsyncResponse,
     }
 
     public void mapView(View view) {
-        Intent intent = new Intent(this, MapsActivity.class);
-        startActivity(intent);
+       Intent intent = new Intent(this, MapsActivity.class);
+       startActivity(intent);
+
     }
 
     public void getLocation(){
