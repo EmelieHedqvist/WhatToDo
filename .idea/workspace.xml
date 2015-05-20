@@ -17,8 +17,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.emehed.emeliehedqvist.whattodo" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38a98c58-27f0-47c2-94ef-8110f30affec" name="Default" comment="Fixed MainButtonMessages Error">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/emehed/emeliehedqvist/whattodo/DisplayActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/emehed/emeliehedqvist/whattodo/DisplayActivity.java" />
+    <list default="true" id="38a98c58-27f0-47c2-94ef-8110f30affec" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="WhatToDo.iws" />
@@ -1349,7 +1348,11 @@
       <created>1432116890091</created>
       <updated>1432116890091</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fixed MainButtonMessages Error">
+      <created>1432117318698</created>
+      <updated>1432117318698</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
