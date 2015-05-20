@@ -44,7 +44,7 @@ public class PlaceFinder{
             if (i==1)
                 keyword = "restaurant";
             else
-            keyword = "amusement_park|aquarium|art_gallery|bowling_alley|casino|library|movie_rental|movie_theater|museum|spa|stadium|zoo";
+            keyword = "amusement_park|aquarium|art_gallery|bowling_alley|casino|library|movie_rental|movie_theater|museum|nightclub|spa|stadium|zoo";
         }
 
             String findPlaceUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude +
