@@ -1,32 +1,20 @@
 package com.emehed.emeliehedqvist.whattodo;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.location.Criteria;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.SeekBar;
-import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
     public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
 
-    int radius;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        radius = 5000;
     }
 
 
@@ -62,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         String message = "";
         if (button == findViewById(R.id.barbutton)) {
             message = "bar";
+        }
+        if (button == findViewById(R.id.resturantbutton)) {
+            message = "restaurant";
         }
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);

@@ -39,7 +39,7 @@ public class PlaceFinder{
                 "&radius=5000&types=bar&sensor=true&key=AIzaSyDtYpMpKbapO5YkwHO5h265jccWsiYUx58";
 
         DownloadWebpage dwt = new DownloadWebpage();
-        dwt.execute(s);
+        dwt.execute(findPlaceUrl);
         return dwt;
     }
 

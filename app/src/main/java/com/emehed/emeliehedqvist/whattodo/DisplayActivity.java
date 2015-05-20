@@ -44,9 +44,14 @@ public class DisplayActivity extends AppCompatActivity implements AsyncResponse,
         radius = settings.getInt("radius", 0);
 
 
-        if (message == "bar"){
+        if (message.equals("bar")){
             keyword = "bar";
-        } /*else if (button == findViewById(R.id.restaurant)){
+        }
+        if (message.equals("restaurant")){
+            keyword = "restaurant";
+        }
+
+         /*else if (button == findViewById(R.id.restaurant)){
             keyword = "restaurant";
         } else if (button == findViewById(R.id.nightClub)){
             keyword = "night_club";
