@@ -25,6 +25,7 @@ public class DisplayActivity extends AppCompatActivity implements AsyncResponse,
     TextView name;
     TextView phoneNumber;
     TextView address;
+    TextView rating;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +99,9 @@ public class DisplayActivity extends AppCompatActivity implements AsyncResponse,
 
         address = (TextView)findViewById(R.id.address);
         address.setText(recommendedPlace.address);
+
+        rating = (TextView)findViewById(R.id.ratingText);
+        rating.setText(recommendedPlace.rating);
 
     }
 
