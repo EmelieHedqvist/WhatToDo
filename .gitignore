@@ -49,3 +49,4 @@ Thumbs.db
 build/intermediates/model_data.bin
 
 WhatToDo.iml
+*.iml
