@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             message = "activity";
         }
         else {
-            message = "random";
+            message = "bar";
         }
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
