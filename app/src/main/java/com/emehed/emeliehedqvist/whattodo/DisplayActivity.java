@@ -52,6 +52,12 @@ public class DisplayActivity extends AppCompatActivity implements AsyncResponse,
         if (message.equals("restaurant")) {
             keyword = "restaurant";
         }
+        if (message.equals("activity")) {
+            keyword = "activity";
+        }
+        else{
+            keyword = "random";
+        }
 
          /*else if (button == findViewById(R.id.restaurant)){
             keyword = "restaurant";
