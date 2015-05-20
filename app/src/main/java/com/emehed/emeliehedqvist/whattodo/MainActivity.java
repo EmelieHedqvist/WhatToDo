@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if (button == findViewById(R.id.resturantbutton)) {
             message = "restaurant";
+
         }
         if (button == findViewById(R.id.activitybutton)) {
             message = "activity";
