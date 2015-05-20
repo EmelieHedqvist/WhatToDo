@@ -50,7 +50,7 @@
             />
 
         <TextView
-            android:text="Yaki-Da"
+
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,7 +76,6 @@
             />
 
         <TextView
-            android:text="031-123456"
             android:id="@+id/phonenumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,7 +97,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"/>
         <TextView
-            android:text="Storgatan 47"
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"

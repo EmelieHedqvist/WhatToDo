@@ -81,6 +81,66 @@
             android:onClick="settingView"
             />
 
+        <ImageButton
+
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/theater"
+            android:background="@drawable/barbutton"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_columnSpan="3"
+            android:layout_gravity="left"
+            android:onClick="createChoice"
+            />
+
+        <ImageButton
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/sport"
+            android:background="@drawable/barbutton"
+            android:layout_row="1"
+            android:layout_column="3"
+            android:layout_columnSpan="3"
+            android:layout_gravity="right"
+            android:onClick="createChoice"
+            />
+
+        <ImageButton
+
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/random"
+            android:background="@drawable/barbutton"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_columnSpan="6"
+            android:layout_gravity="center"
+            android:onClick="createChoice"
+            />
+
+        <ImageButton
+            android:layout_margin="10dp"
+            android:background="@drawable/info"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_gravity="bottom|left"
+            android:onClick="infoView"
+            />
+
+        <ImageButton
+            android:layout_margin="10dp"
+            android:background="@drawable/settings"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:layout_row="2"
+            android:layout_column="5"
+            android:layout_gravity="bottom|right"
+            android:onClick="settingView"
+            />
+
 
     </GridLayout>
 </RelativeLayout>

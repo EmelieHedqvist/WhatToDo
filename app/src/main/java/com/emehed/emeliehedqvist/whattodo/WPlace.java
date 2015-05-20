@@ -1,8 +1,10 @@
 package com.emehed.emeliehedqvist.whattodo;
+
 /**
- * Created by henriktaljedal on 2015-04-29.
+ * Created by henriktaljedal on 2015-05-11.
  */
-public class Place {
+
+public class WPlace {
     String reference, name, address, rating, phone;
     Boolean isOpen;
 
