@@ -60,7 +60,7 @@
             />
 
         <ImageButton
-        
+            android:layout_marginTop="40dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/activitybutton"
@@ -73,9 +73,10 @@
             />
 
         <ImageButton
+            android:layout_marginTop="40dp"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:id="@+id/sport"
+            android:id="@+id/randombutton"
             android:background="@drawable/randombutton"
             android:layout_row="1"
             android:layout_column="3"
@@ -83,8 +84,6 @@
             android:layout_gravity="right"
             android:onClick="createChoice"
             />
-
-
 
         <ImageButton
             android:layout_margin="10dp"
