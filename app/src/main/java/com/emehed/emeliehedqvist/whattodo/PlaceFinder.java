@@ -28,18 +28,34 @@ public class PlaceFinder{
     ArrayList<WPlace> foundPlaces;
     private static String googleWebServicePermission = "AIzaSyDtYpMpKbapO5YkwHO5h265jccWsiYUx58";
 
+    String keyword;
 
     public DownloadWebpage search(String keyword, double latitude, double longitude, int radius){
 
+        this.keyword = keyword;
+        if(keyword.equals("activity")){
+            keyword = "amusement_park|aquarium|art_gallery|bowling_alley|casino|library|movie_rental|movie_theater|museum|spa|stadium|zoo";
+        }
+        else if (keyword.equals("random")){
+            Random rand = new Random();
+            int  i = rand.nextInt(3);
+            if (i==0)
+                keyword = "bar";
+            if (i==1)
+                keyword = "restaurant";
+            else
+            keyword = "amusement_park|aquarium|art_gallery|bowling_alley|casino|library|movie_rental|movie_theater|museum|spa|stadium|zoo";
+        }
 
-        String findPlaceUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+ latitude +","+longitude +
-                "&radius="+ radius +"&types="+ keyword +"&sensor=true&key=" + googleWebServicePermission;
+            String findPlaceUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude +
+                    "&radius=" + radius + "&types=" + keyword + "&sensor=true&key=" + googleWebServicePermission;
 
-        String s = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=57.6932533,11.9758226" +
-                "&radius=5000&types=bar&sensor=true&key=AIzaSyDtYpMpKbapO5YkwHO5h265jccWsiYUx58";
+            //String test = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=57.6932533,11.9758226" +
+                //    "&radius=5000&types=bar|church&sensor=true&key=AIzaSyDtYpMpKbapO5YkwHO5h265jccWsiYUx58";
 
         DownloadWebpage dwt = new DownloadWebpage();
         dwt.execute(findPlaceUrl);
+        //dwt.execute(test);
         return dwt;
     }
 

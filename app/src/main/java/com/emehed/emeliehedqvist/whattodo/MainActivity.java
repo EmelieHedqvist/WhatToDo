@@ -58,9 +58,10 @@ public class MainActivity extends AppCompatActivity {
         if (button == findViewById(R.id.activitybutton)) {
             message = "activity";
         }
-        else {
-            message = "bar";
+        if (button == findViewById(R.id.randombutton)) {
+            message = "random";
         }
+
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
 
