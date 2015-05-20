@@ -39,25 +39,14 @@ public class DisplayActivity extends AppCompatActivity implements AsyncResponse,
         getLocation();
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        keyword = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
         SharedPreferences settings = getSharedPreferences("values",
                 Context.MODE_PRIVATE);
         radius = settings.getInt("radius", 0);
 
 
-        if (message.equals("bar")) {
-            keyword = "bar";
-        }
-        if (message.equals("restaurant")) {
-            keyword = "restaurant";
-        }
-        if (message.equals("activity")) {
-            keyword = "activity";
-        }
-        else{
-            keyword = "random";
-        }
+
 
          /*else if (button == findViewById(R.id.restaurant)){
             keyword = "restaurant";
