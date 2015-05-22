@@ -48,7 +48,7 @@ public class PlaceFinder{
         }
 
             String findPlaceUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude +
-                    "&radius=" + radius + "&types=" + keyword + "&sensor=true&key=" + googleWebServicePermission;
+                    "&radius=" + radius + "&types=" + keyword + "&sensor=true&opennow&key=" + googleWebServicePermission;
 
             //String test = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=57.6932533,11.9758226" +
                 //    "&radius=5000&types=bar|church&sensor=true&key=AIzaSyDtYpMpKbapO5YkwHO5h265jccWsiYUx58";
@@ -166,7 +166,7 @@ public class PlaceFinder{
             try {
                 /** Call getPlace with place JSON object to parse the place */
                 place = getPlace((JSONObject)jPlaces.get(i));
-                placesList.add(place);
+                    placesList.add(place);
 
             } catch (JSONException e) {
                 e.printStackTrace();
