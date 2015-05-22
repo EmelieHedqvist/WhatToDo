@@ -11,6 +11,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="info">We who made this app: \nMichaela Fritiofsson\nHenrik Täljedal \nEdvin Nordell \nGustav Swedberg \nEmelie Hedqvist \nAlbin Bjurhall</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps_temp">Map</string>
 
 
 </resources>

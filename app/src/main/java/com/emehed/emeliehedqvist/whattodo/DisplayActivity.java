@@ -1,5 +1,6 @@
 package com.emehed.emeliehedqvist.whattodo;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,14 +9,13 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 
-public class DisplayActivity extends AppCompatActivity implements AsyncResponse, LocationListener{
+public class DisplayActivity extends Activity implements AsyncResponse, LocationListener{
 
     double latitude = 0;
     double longitude = 0;
@@ -101,7 +101,7 @@ public class DisplayActivity extends AppCompatActivity implements AsyncResponse,
     }
 
     public void mapView(View view) {
-       Intent intent = new Intent(this, MapsActivity.class);
+       Intent intent = new Intent(this, InfoActivity.class);
        startActivity(intent);
 
     }
