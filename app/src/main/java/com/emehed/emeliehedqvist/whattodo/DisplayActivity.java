@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 public class DisplayActivity extends Activity implements AsyncResponse, LocationListener{
 
-    double latitude, longitude, pLat, pLong;
+    double latitude, longitude, pLat, pLong, distance;
 
     int radius = 1000;
     String keyword = "";
@@ -26,6 +26,7 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
     TextView name;
     TextView address;
     TextView rating;
+    TextView dist;
     ImageView type;
 
     @Override
@@ -35,6 +36,7 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
         type = (ImageView)findViewById(R.id.type);
         name = (TextView) findViewById(R.id.name);
         address = (TextView) findViewById(R.id.address);
+        dist = (TextView) findViewById(R.id.distance);
 
         getLocation();
 
@@ -97,6 +99,7 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
         recommendedPlace = place;
         pLat = recommendedPlace.lat;
         pLong = recommendedPlace.lng;
+        calcDist();
 
         name = (TextView)findViewById(R.id.name);
         name.setText(recommendedPlace.name);
@@ -106,6 +109,10 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
 
         rating = (TextView)findViewById(R.id.ratingText);
         rating.setText(recommendedPlace.rating);
+
+        dist = (TextView)findViewById(R.id.distance);
+        dist.setText(Double.toString(distance) + " km");
+
         }
         else  {
             Intent i = new Intent(getApplicationContext(), NoResultActivity.class);
@@ -122,6 +129,19 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
         String[] list = new String[]{lat,lng, name, address};
         m.putExtra("pos",list);
         startActivity(m);
+    }
+    public void calcDist(){
+        Location myLocation = new Location("MyLocation");
+
+        myLocation.setLatitude(latitude);
+        myLocation.setLongitude(longitude);
+
+        Location pLocation = new Location("PlaceLocation");
+
+        pLocation.setLatitude(pLat);
+        pLocation.setLongitude(pLong);
+        //Rounds to two decimals and changes meter to km
+        distance = (Math.round((myLocation.distanceTo(pLocation)/1000)*100.0)/100.0);
     }
 
     public void getLocation(){
