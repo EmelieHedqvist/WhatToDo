@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.net.URI;
 
 
@@ -115,6 +117,10 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
 
     public void mapView(View view) {
         Intent m = new Intent(getApplicationContext(), MapsActivity.class);
+        double lat = latitude;
+        double lng = longitude;
+        double[] list = new double[]{lat,lng};
+        m.putExtra("pos",list);
         startActivity(m);
     }
 

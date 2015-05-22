@@ -1,6 +1,7 @@
 package com.emehed.emeliehedqvist.whattodo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,6 +20,10 @@ public class MapsActivity extends Activity implements OnMapReadyCallback {
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        Intent intent = getIntent();
+        double[] pos = intent.getDoubleArrayExtra("pos");
+        double latitude = pos[0];
+        double longitude = pos[1];
 
     }
 
