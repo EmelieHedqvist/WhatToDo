@@ -203,11 +203,6 @@ public class PlaceFinder{
                 place.rating = jPlace.getString("rating");
             }
 
-            // Extracting WPlace Phone, if available
-            if(!jPlace.isNull("phone")){
-                place.phone = jPlace.getString("phone");
-            }
-
             // Extracting WPlace isOpen, if available
             if(!jPlace.isNull("open_now")){
                 place.isOpen = jPlace.getBoolean("open_now");
