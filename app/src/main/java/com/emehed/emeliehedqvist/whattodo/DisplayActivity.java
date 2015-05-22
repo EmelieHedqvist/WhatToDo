@@ -92,6 +92,8 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
     @Override
     public void processFinish(WPlace place) {
 
+
+        if(place!=null) {
         recommendedPlace = place;
 
         name = (TextView)findViewById(R.id.name);
@@ -102,7 +104,11 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
 
         rating = (TextView)findViewById(R.id.ratingText);
         rating.setText(recommendedPlace.rating);
-
+        }
+        else  {
+            Intent i = new Intent(getApplicationContext(), NoResultActivity.class);
+            startActivity(i);
+        }
     }
 
     public void mapView(View view) {

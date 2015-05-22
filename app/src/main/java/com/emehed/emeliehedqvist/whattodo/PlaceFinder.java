@@ -172,10 +172,13 @@ public class PlaceFinder{
                 e.printStackTrace();
             }
         }
-        Random rand = new Random();
-        int  i = rand.nextInt(placesList.size()-1);
-        chosenPlace = placesList.get(i);
-        return chosenPlace;
+        if (!placesList.isEmpty()) {
+            Random rand = new Random();
+            int i = rand.nextInt(placesList.size() - 1);
+            chosenPlace = placesList.get(i);
+            return chosenPlace;
+        }
+        else return null;
     }
 
     /** Parsing the WPlace JSON object */
@@ -202,9 +205,9 @@ public class PlaceFinder{
             if(!jPlace.isNull("rating")){
                 place.rating = jPlace.getString("rating");
             }
-            else if(jPlace.isNull("rating")){
+            else
                 place.rating = "?";
-            }
+
 
 
         } catch (JSONException e) {
