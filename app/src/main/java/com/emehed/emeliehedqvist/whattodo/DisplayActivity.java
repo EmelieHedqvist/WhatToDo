@@ -9,10 +9,10 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -24,17 +24,16 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
     String keyword = "";
     WPlace recommendedPlace;
     TextView name;
-    TextView phoneNumber;
     TextView address;
     TextView rating;
+    ImageView type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
-
+        type = (ImageView)findViewById(R.id.type);
         name = (TextView) findViewById(R.id.name);
-        //phoneNumber = (TextView) findViewById(R.id.phonenumber);
         address = (TextView) findViewById(R.id.address);
 
         getLocation();
@@ -45,15 +44,7 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
         SharedPreferences settings = getSharedPreferences("values",
                 Context.MODE_PRIVATE);
         radius = settings.getInt("radius", 0);
-
-
-
-
-         /*else if (button == findViewById(R.id.restaurant)){
-            keyword = "restaurant";
-        } else if (button == findViewById(R.id.nightClub)){
-            keyword = "night_club";
-        }*/
+        setTypeLogo();
 
         PlaceFinder pf = new PlaceFinder();
         PlaceFinder.DownloadWebpage dw = pf.search(keyword, latitude, longitude, radius);
@@ -82,6 +73,21 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
 
         return super.onOptionsItemSelected(item);
     }
+    public void setTypeLogo(){
+        if(keyword.equals("bar")){
+            type.setImageResource(R.drawable.drink);
+        }
+        else if(keyword.equals("restaurant")){
+            type.setImageResource(R.drawable.eat);
+        }
+        else if(keyword.equals("activity")){
+            type.setImageResource(R.drawable.activities);
+        }
+        else{
+            type.setImageResource(R.drawable.random);
+        }
+
+    }
 
     @Override
     public void processFinish(WPlace place) {
@@ -90,9 +96,6 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
 
         name = (TextView)findViewById(R.id.name);
         name.setText(recommendedPlace.name);
-
-        //phoneNumber = (TextView)findViewById(R.id.phonenumber);
-        //phoneNumber.setText(recommendedPlace.phone);
 
         address = (TextView)findViewById(R.id.address);
         address.setText(recommendedPlace.address);
