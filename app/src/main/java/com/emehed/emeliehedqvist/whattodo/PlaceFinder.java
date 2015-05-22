@@ -34,7 +34,7 @@ public class PlaceFinder{
 
         this.keyword = keyword;
         if(keyword.equals("activity")){
-            keyword = "amusement_park|aquarium|art_gallery|bowling_alley|casino|library|movie_rental|movie_theater|museum|spa|stadium|zoo";
+            keyword = "amusement_park|aquarium|art_gallery|bowling_alley|casino|movie_rental|movie_theater|museum|spa|zoo";
         }
         else if (keyword.equals("random")){
             Random rand = new Random();
@@ -44,7 +44,7 @@ public class PlaceFinder{
             if (i==1)
                 keyword = "restaurant";
             else
-            keyword = "amusement_park|aquarium|art_gallery|bowling_alley|casino|library|movie_rental|movie_theater|museum|nightclub|spa|stadium|zoo";
+            keyword = "amusement_park|aquarium|art_gallery|bowling_alley|casino|movie_rental|movie_theater|museum|nightclub|spa|zoo";
         }
 
             String findPlaceUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude +
