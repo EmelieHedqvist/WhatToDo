@@ -3,14 +3,17 @@ package com.emehed.emeliehedqvist.whattodo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 
-public class SettingActivity extends Activity implements SeekBar.OnSeekBarChangeListener {
+public class SettingActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 
     private SeekBar sb;
     private int rangeValue;
