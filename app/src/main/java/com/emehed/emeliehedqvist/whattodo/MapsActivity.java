@@ -12,6 +12,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends Activity implements OnMapReadyCallback {
+    double lat, lng;
+    String name, address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +23,11 @@ public class MapsActivity extends Activity implements OnMapReadyCallback {
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         Intent intent = getIntent();
-        double[] pos = intent.getDoubleArrayExtra("pos");
-        double latitude = pos[0];
-        double longitude = pos[1];
+        String[] pos = intent.getStringArrayExtra("pos");
+        lat = Double.parseDouble(pos[0]);
+        lng = Double.parseDouble(pos[1]);
+        name = pos[2];
+        address = pos[3];
 
     }
 
@@ -31,17 +35,17 @@ public class MapsActivity extends Activity implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap map) {
-        LatLng gbg = new LatLng(57.693, 11.975);
+        LatLng pos = new LatLng(lat, lng);
 
 
         map.setMyLocationEnabled(true);
 
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(gbg, 13));
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 13));
 
         map.addMarker(new MarkerOptions()
-                .title("Överskottskonsult HQ")
-                .snippet("The best MGMTC")
-                .position(gbg));
+                .title(name)
+                .snippet(address)
+                .position(pos));
 
 
     }

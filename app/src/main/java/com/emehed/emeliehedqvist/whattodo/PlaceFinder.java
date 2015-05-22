@@ -195,6 +195,16 @@ public class PlaceFinder{
             if(!jPlace.isNull("name")){
                 place.name = jPlace.getString("name");
             }
+            // Extracting WPlace latitude, if available
+            if(!jPlace.isNull("geometry")){
+                JSONObject point = jPlace.getJSONObject("geometry").getJSONObject("location");
+                place.lat = point.getDouble("lat");
+            }
+            // Extracting WPlace longitude, if available
+            if(!jPlace.isNull("geometry")){
+                JSONObject point = jPlace.getJSONObject("geometry").getJSONObject("location");
+                place.lng = point.getDouble("lng");
+            }
 
             // Extracting WPlace Vicinity, if available
             if(!jPlace.isNull("vicinity")){

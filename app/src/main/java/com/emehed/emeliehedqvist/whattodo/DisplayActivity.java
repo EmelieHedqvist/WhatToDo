@@ -15,15 +15,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.model.LatLng;
-
-import java.net.URI;
-
 
 public class DisplayActivity extends Activity implements AsyncResponse, LocationListener{
 
-    double latitude = 0;
-    double longitude = 0;
+    double latitude, longitude, pLat, pLong;
+
     int radius = 1000;
     String keyword = "";
     WPlace recommendedPlace;
@@ -99,6 +95,8 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
 
         if(place!=null) {
         recommendedPlace = place;
+        pLat = recommendedPlace.lat;
+        pLong = recommendedPlace.lng;
 
         name = (TextView)findViewById(R.id.name);
         name.setText(recommendedPlace.name);
@@ -117,9 +115,11 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
 
     public void mapView(View view) {
         Intent m = new Intent(getApplicationContext(), MapsActivity.class);
-        double lat = latitude;
-        double lng = longitude;
-        double[] list = new double[]{lat,lng};
+        String lat = Double.toString(pLat);
+        String lng = Double.toString(pLong);
+        String name = recommendedPlace.name;
+        String address = recommendedPlace.address;
+        String[] list = new String[]{lat,lng, name, address};
         m.putExtra("pos",list);
         startActivity(m);
     }
