@@ -206,10 +206,6 @@ public class PlaceFinder{
                 place.rating = "?";
             }
 
-            // Extracting WPlace isOpen, if available
-            if(!jPlace.isNull("open_now")){
-                place.isOpen = jPlace.getBoolean("open_now");
-            }
 
         } catch (JSONException e) {
             e.printStackTrace();

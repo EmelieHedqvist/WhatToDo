@@ -6,6 +6,6 @@ package com.emehed.emeliehedqvist.whattodo;
 
 public class WPlace {
     String reference, name, address, rating;
-    Boolean isOpen;
+   
 
 }
