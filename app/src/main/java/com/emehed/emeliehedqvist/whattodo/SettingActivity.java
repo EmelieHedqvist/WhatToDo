@@ -2,6 +2,7 @@ package com.emehed.emeliehedqvist.whattodo;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import java.nio.charset.MalformedInputException;
 
 
 public class SettingActivity extends Activity implements SeekBar.OnSeekBarChangeListener {
@@ -82,5 +85,7 @@ public class SettingActivity extends Activity implements SeekBar.OnSeekBarChange
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
         rangeValue = rangeValue;
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(i);
     }
 }
