@@ -84,6 +84,7 @@ public class DisplayActivity extends AppCompatActivity implements AsyncResponse,
 
     @Override
     public void processFinish(WPlace place) {
+
         recommendedPlace = place;
 
         name = (TextView)findViewById(R.id.name);
