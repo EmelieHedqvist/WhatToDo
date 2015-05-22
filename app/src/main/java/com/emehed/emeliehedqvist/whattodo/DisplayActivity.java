@@ -34,7 +34,7 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
         setContentView(R.layout.activity_display);
 
         name = (TextView) findViewById(R.id.name);
-        phoneNumber = (TextView) findViewById(R.id.phonenumber);
+        //phoneNumber = (TextView) findViewById(R.id.phonenumber);
         address = (TextView) findViewById(R.id.address);
 
         getLocation();
@@ -91,8 +91,8 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
         name = (TextView)findViewById(R.id.name);
         name.setText(recommendedPlace.name);
 
-        phoneNumber = (TextView)findViewById(R.id.phonenumber);
-        phoneNumber.setText(recommendedPlace.phone);
+        //phoneNumber = (TextView)findViewById(R.id.phonenumber);
+        //phoneNumber.setText(recommendedPlace.phone);
 
         address = (TextView)findViewById(R.id.address);
         address.setText(recommendedPlace.address);
@@ -103,9 +103,8 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
     }
 
     public void mapView(View view) {
-       Intent intent = new Intent(this, MapsActivity.class);
+       Intent intent = new Intent(this, NoResultActivity.class);
        startActivity(intent);
-
     }
 
     public void getLocation(){

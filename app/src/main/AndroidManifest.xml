@@ -51,13 +51,18 @@
         </activity>
         <activity
             android:name=".SettingActivity"
-            android:label="@string/title_activity_setting" >
+            android:label="@string/title_activity_setting"
+            android:parentActivityName=".MainActivity">
         </activity>
         <activity
             android:name=".InfoActivity"
             android:label="@string/title_activity_info" >
         </activity>
-
+        <activity
+            android:name=".NoResultActivity"
+            android:label="NoResultActivity"
+            android:parentActivityName=".MainActivity">
+            </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
