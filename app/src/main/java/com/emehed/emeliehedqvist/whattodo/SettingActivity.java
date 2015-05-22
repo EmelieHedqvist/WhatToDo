@@ -4,16 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
-import java.nio.charset.MalformedInputException;
 
 
 public class SettingActivity extends Activity implements SeekBar.OnSeekBarChangeListener {
@@ -32,7 +27,7 @@ public class SettingActivity extends Activity implements SeekBar.OnSeekBarChange
         sb.setOnSeekBarChangeListener(this);
         SharedPreferences settings = getSharedPreferences("values",
                 Context.MODE_PRIVATE);
-        int radius = settings.getInt("radius", 0);
+        int radius = settings.getInt("radius", 1000);
         sb.setProgress(radius);
         this.rangeValue = radius;
 
