@@ -202,6 +202,9 @@ public class PlaceFinder{
             if(!jPlace.isNull("rating")){
                 place.rating = jPlace.getString("rating");
             }
+            else if(jPlace.isNull("rating")){
+                place.rating = "?";
+            }
 
             // Extracting WPlace isOpen, if available
             if(!jPlace.isNull("open_now")){
