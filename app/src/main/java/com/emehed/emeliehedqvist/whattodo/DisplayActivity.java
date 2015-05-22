@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.net.URI;
+
 
 public class DisplayActivity extends Activity implements AsyncResponse, LocationListener{
 
@@ -112,8 +114,8 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
     }
 
     public void mapView(View view) {
-       Intent intent = new Intent(this, NoResultActivity.class);
-       startActivity(intent);
+        Intent m = new Intent(getApplicationContext(), MapsActivity.class);
+        startActivity(m);
     }
 
     public void getLocation(){
