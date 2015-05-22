@@ -1,5 +1,6 @@
 package com.emehed.emeliehedqvist.whattodo;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +16,7 @@ import android.view.View;
 import android.widget.TextView;
 
 
-public class DisplayActivity extends AppCompatActivity implements AsyncResponse, LocationListener{
+public class DisplayActivity extends Activity implements AsyncResponse, LocationListener{
 
     double latitude = 0;
     double longitude = 0;

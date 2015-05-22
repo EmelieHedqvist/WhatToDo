@@ -13,7 +13,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 
-public class SettingActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
+public class SettingActivity extends Activity implements SeekBar.OnSeekBarChangeListener {
 
     private SeekBar sb;
     private int rangeValue;
