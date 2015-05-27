@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">WhatToDo</string>
+    <string name="wtd1">What To Do?</string>
+    <string name="wtd2">What To Do!</string>
+    <string name="settings">Settings</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_display">DisplayActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="title_activity_info">InfoActivity</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="info">We who made this app: \nMichaela Fritiofsson\nHenrik Täljedal \nEdvin Nordell \nGustav Swedberg \nEmelie Hedqvist \nAlbin Bjurhall</string>
+    <string name="title_activity_maps">Map</string>
+
+
 </resources>

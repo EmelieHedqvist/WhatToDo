@@ -1,18 +1,28 @@
 package com.emehed.emeliehedqvist.whattodo;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
+<<<<<<< HEAD
 public class MainActivity extends ActionBarActivity{
+=======
+public class MainActivity extends Activity {
+    public static final String EXTRA_MESSAGE = "com.emehed.emeliehedqvist.whattodo.MESSAGE";
+>>>>>>> KnapparWithPlaceFinder
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+
 
 
     @Override
@@ -36,4 +46,40 @@ public class MainActivity extends ActionBarActivity{
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void createChoice(View view) {
+        Intent intent = new Intent(this, DisplayActivity.class);
+        View button = view;
+        String message = "";
+        if (button == findViewById(R.id.barbutton)) {
+            message = "bar";
+        }
+        if (button == findViewById(R.id.resturantbutton)) {
+            message = "restaurant";
+
+        }
+        if (button == findViewById(R.id.activitybutton)) {
+            message = "activity";
+        }
+        if (button == findViewById(R.id.randombutton)) {
+            message = "random";
+        }
+
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+
+
+    }
+
+    public void settingView(View view) {
+        Intent intent = new Intent(this, SettingActivity.class);
+        startActivity(intent);
+    }
+
+    public void infoView(View view) {
+        Intent intent = new Intent(this, InfoActivity.class);
+        startActivity(intent);
+    }
+
 }
+
