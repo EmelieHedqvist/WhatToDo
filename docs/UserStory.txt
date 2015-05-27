@@ -1,0 +1,15 @@
+As a user I would easily and quickly find an activity without wondering and deciding what to do.
+ 
+As a user I would like to get a recommendation for a bar nearby.
+
+As a user I would like to get a recommendation for a restaurant nearby.
+
+As a user I would like to get a recommendation for a random activity, such as visiting a museum or bowling. 
+
+As a user I would like to know where to go and how to get there.
+
+As a user I would like to be ensured that the recommended activity is open when I’m asking for a recommendation.
+
+As a user I would like the app to work anywhere I am, independently of city or region.
+
+As a user I would like to be able to change the search radius for the recommended activities.
