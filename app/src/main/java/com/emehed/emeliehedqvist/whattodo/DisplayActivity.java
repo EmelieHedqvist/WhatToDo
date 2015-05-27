@@ -15,19 +15,20 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
+//This class implements two interfaces,
+//First, AsyncResponse is implemented for enabling a call to the method processFinished in this class, when a thread,
+//away from the UI thread, is finished in the class PlaceFinder
+//LocationListener is implemented to enable for this class to access the coordinates of the users location in the getLocation() method
 public class DisplayActivity extends Activity implements AsyncResponse, LocationListener{
-
+    //latitude & longitude = users location, pLat & pLong = location of found place,
+    // distance = calculated distance (km) between user and found place, calculated in method calcDist()
     double latitude, longitude, pLat, pLong, distance;
 
-    int radius = 1000;
-    String keyword = "";
-    WPlace recommendedPlace;
-    TextView name;
-    TextView address;
-    TextView rating;
-    TextView dist;
-    ImageView type;
+    int radius; //Stores the search radius chosen by the user
+    String keyword; //Stores the keyword chosen via button pressed on main screen 'bar, restaurant, activity or random (mystery box)'
+    WPlace recommendedPlace; //Stores an instance of the class WPlace, received via AsyncResponse from PlaceFinder
+    TextView name, address, rating, dist; //Text views in activity_display
+    ImageView type; //Image view in activity_display
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

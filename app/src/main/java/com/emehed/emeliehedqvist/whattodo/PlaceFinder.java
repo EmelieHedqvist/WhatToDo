@@ -26,16 +26,21 @@ import java.util.Random;
  */
 public class PlaceFinder{
 
+    //This is the developer key for access to GooglePlaces, generated for developer usage with the WhatToDo App
     private static String googleWebServicePermission = "AIzaSyDtYpMpKbapO5YkwHO5h265jccWsiYUx58";
-
+    //This is the instantiation for the String value for the value searched for, i.e. bar, restaurant, activity etc.
     String keyword;
 
+    // search is the method which is called from DisplayActivity -
+    // 'search' method builds the url (which is sent to google web services later on, in the 'downloadUrl' method)
+    // 'search' calls DownloadWebpage with the url as parameter
     public DownloadWebpage search(String keyword, double latitude, double longitude, int radius){
-
+        //A check is done on keyword, to create the right values to put in the URL
         this.keyword = keyword;
         if(keyword.equals("activity")){
             keyword = "amusement_park|aquarium|art_gallery|bowling_alley|casino|movie_rental|movie_theater|museum|spa|zoo";
         }
+        //If 'mystery box' is clicked, random is sent as keyword. The keyword used in the URL is thereby chosen by random
         else if (keyword.equals("random")){
             Random rand = new Random();
             int  i = rand.nextInt(3);
@@ -46,16 +51,19 @@ public class PlaceFinder{
             else
             keyword = "amusement_park|aquarium|art_gallery|bowling_alley|casino|movie_rental|movie_theater|museum|nightclub|spa|zoo";
         }
-
+            //This is the creation of the URL, which is sent to Google Web Services in method 'downloadUrl'
+            //The criteria opennow in the URL is to search only for places that are open when the search action is executed
             String findPlaceUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude +
                     "&radius=" + radius + "&types=" + keyword + "&sensor=true&opennow&key=" + googleWebServicePermission;
 
 
-
+        //This creates a new instance of the sub class DownloadWebpage, which is run away from the main UI thread
         DownloadWebpage dwt = new DownloadWebpage();
-
+        //dwt.execute(...) starts the method doInBackground(...) in sub class DownloadWebpage, which is run away from the main UI thread
         dwt.execute(findPlaceUrl);
-
+        //What is returned is a instance of the sub class DownloadWebpage, which has to be a sub class, this enables DisplayActivity to get access to
+        //the DownloadWebpage sub class
+        // in the sub class DownloadWebpage, which runs as a AsyncTask, away from the main UI thread
         return dwt;
     }
 
@@ -66,7 +74,13 @@ public class PlaceFinder{
     // URL string and uses it to create an HttpUrlConnection. Once the connection
     // has been established, the AsyncTask downloads the contents of the webpage as
     // an InputStream. Finally, the InputStream is converted into a string, which is
-    // displayed in the UI by the AsyncTask's onPostExecute method.
+    // used in the onPostExecute method, which takes the string and convertes it into a JSONObject
+    // Then the information in the JSONObject is converted into instances of the class WPlace,
+    // one instance of WPlace is created for each 'place' found on Google Web Services
+    // These instances of WPlace are stored in an array list
+    // Finally, by random one of the WPlace instances in this array list is chosen by random,
+    // and then sent to the method processFinished via an 'AsyncResponce delegate' call, when this thread
+    // (away from the main UI thread) is finished
     public class DownloadWebpage extends AsyncTask<String, Void, String> {
         public AsyncResponse delegate=null;
         @Override
@@ -79,7 +93,12 @@ public class PlaceFinder{
                 return "Unable to retrieve web page. URL may be invalid.";
             }
         }
-        // onPostExecute displays the results of the AsyncTask.
+        // onPostExecute displays is run last of the AsyncTask.
+        // This method takes the data from Google Web Services, converted as a String, and convertes it to a JSONObject
+        // then it sends the JSONObject as a parameter to the method 'parse', which returns an instance of the class WPlace
+        // then 'delegate' is executed, which is a call for the method 'processFinished(...)' in the class DisplayActivity
+        // in this way, an instance of a WPlace object is sent to DisplayActivity when this thread (away from the UI thread) is finished
+        // If this is unclear, contact us on henrik@taljedal.se for a better explanation! :)
         @Override
         protected void onPostExecute(String result) {
             JSONObject jObject;
@@ -89,6 +108,7 @@ public class PlaceFinder{
                 jObject = new JSONObject(result);
 
                 /** Getting the parsed data as a List construct */
+                //
                 place = parse(jObject);
 
                 delegate.processFinish(place);
@@ -132,7 +152,7 @@ public class PlaceFinder{
     }
     // Reads an InputStream and converts it to a String.
     public String readIt(InputStream stream) throws IOException, UnsupportedEncodingException {
-        Reader reader = null;
+        Reader reader;
         StringBuilder jsonResults = new StringBuilder();
         int readSize;
         reader = new InputStreamReader(stream, "UTF-8");
@@ -147,7 +167,8 @@ public class PlaceFinder{
     }
     /** Receives a JSONObject and returns an instance of a WPlace object */
     public WPlace parse(JSONObject jObject){
-
+        //Creates an array list to store all instances of WPlace in, before a single WPlace instance is chosen by random and sent
+        //to the method processFinished(...) in class DisplayActivity, by 'delegate' in the 'onPostExecute' method.
         ArrayList<WPlace> placesList = new ArrayList<WPlace>();
         WPlace place, chosenPlace;
 
@@ -170,8 +191,10 @@ public class PlaceFinder{
 
             } catch (JSONException e) {
                 e.printStackTrace();
+
             }
         }
+        //Takes the arraylist and chooses one single WPlace instance by random, then returns this WPlace instance
         if (!placesList.isEmpty()) {
             Random rand = new Random();
             int i = rand.nextInt(placesList.size());
@@ -182,7 +205,8 @@ public class PlaceFinder{
 
     }
 
-    /** Parsing the WPlace JSON object */
+    //Gets a JSONObject, reads it and stores the data in it in an instance of a WPlace object
+    //Then this WPlace instance is returned
     private WPlace getPlace(JSONObject jPlace){
 
         WPlace place = new WPlace();
@@ -212,7 +236,7 @@ public class PlaceFinder{
                 place.address = jPlace.getString("vicinity");
             }
 
-            // Extracting WPlace Rating, if available
+            // Extracting WPlace Rating, if available, if not available use '?' instead
             if(!jPlace.isNull("rating")){
                 place.rating = jPlace.getString("rating");
             }
