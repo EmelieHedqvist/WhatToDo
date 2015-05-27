@@ -3,14 +3,13 @@ package com.emehed.emeliehedqvist.whattodo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 
 public class MainActivity extends Activity {
-    public final static String EXTRA_MESSAGE = "com.mycompany.myfirstapp.MESSAGE";
+    public static final String EXTRA_MESSAGE = "com.emehed.emeliehedqvist.whattodo.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +18,7 @@ public class MainActivity extends Activity {
     }
 
 
-    public void switchLayout(View view) {
-        setContentView(R.layout.activity_display);
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

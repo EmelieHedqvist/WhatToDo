@@ -25,7 +25,7 @@ import java.util.Random;
  * Created by henriktaljedal on 2015-05-04.
  */
 public class PlaceFinder{
-    ArrayList<WPlace> foundPlaces;
+
     private static String googleWebServicePermission = "AIzaSyDtYpMpKbapO5YkwHO5h265jccWsiYUx58";
 
     String keyword;
@@ -50,12 +50,12 @@ public class PlaceFinder{
             String findPlaceUrl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + latitude + "," + longitude +
                     "&radius=" + radius + "&types=" + keyword + "&sensor=true&opennow&key=" + googleWebServicePermission;
 
-            //String test = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=57.6932533,11.9758226" +
-                //    "&radius=5000&types=bar|church&sensor=true&key=AIzaSyDtYpMpKbapO5YkwHO5h265jccWsiYUx58";
+
 
         DownloadWebpage dwt = new DownloadWebpage();
+
         dwt.execute(findPlaceUrl);
-        //dwt.execute(test);
+
         return dwt;
     }
 
@@ -174,11 +174,12 @@ public class PlaceFinder{
         }
         if (!placesList.isEmpty()) {
             Random rand = new Random();
-            int i = rand.nextInt(placesList.size() - 1);
+            int i = rand.nextInt(placesList.size());
             chosenPlace = placesList.get(i);
             return chosenPlace;
         }
         else return null;
+
     }
 
     /** Parsing the WPlace JSON object */
