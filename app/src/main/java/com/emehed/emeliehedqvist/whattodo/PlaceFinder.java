@@ -46,7 +46,7 @@ public class PlaceFinder{
             int  i = rand.nextInt(3);
             if (i==0)
                 keyword = "bar";
-            if (i==1)
+            else if (i==1)
                 keyword = "restaurant";
             else
             keyword = "amusement_park|aquarium|art_gallery|bowling_alley|casino|movie_rental|movie_theater|museum|nightclub|spa|zoo";

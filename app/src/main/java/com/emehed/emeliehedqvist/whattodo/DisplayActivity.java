@@ -9,8 +9,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,49 +32,36 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
+
+        //Connects this class with TextViews and an ImageView in activity_display
         type = (ImageView)findViewById(R.id.type);
         name = (TextView) findViewById(R.id.name);
         address = (TextView) findViewById(R.id.address);
         dist = (TextView) findViewById(R.id.distance);
 
+        //Runs the method getLocation() that receives the users coordinates, and stores them in the double variables latitude and longitude
         getLocation();
 
+        //Reads the message sent with the Intent from MainActivity, to receive information about which button that was pressed
         Intent intent = getIntent();
         keyword = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
         SharedPreferences settings = getSharedPreferences("values",
                 Context.MODE_PRIVATE);
         radius = settings.getInt("radius", 0);
+        //setTypeLogo() is a method that presents right logo on top of the activity_display, according to which button pressed on main_activity
         setTypeLogo();
-
+        //Creates an instance of the class PlaceFinder, which is the class that connects to, and receives data, from Google Web Services
         PlaceFinder pf = new PlaceFinder();
+        //This call is to a sub class in PlaceFinder, DownloadWebpage, which runs on a different thread than the main UI, to receive data from Google Web Services on the Internet
+        //When the process (on another thread than main UI) in the sub class DownloadWebpage is finished, a call via 'delegate'/ AsyncResponse is made to send
+        //an instance of a WPlace object back to this class, DisplayActivity, to the method processFinished.
         PlaceFinder.DownloadWebpage dw = pf.search(keyword, latitude, longitude, radius);
         dw.delegate = this;
 
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_display, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
     public void setTypeLogo(){
+        //This method checks keyword and uses this to present a correct logo on top of the screen, i.e. glass/cutlery/activity/mystery box
         if(keyword.equals("bar")){
             type.setImageResource(R.drawable.drink);
         }
@@ -91,7 +76,7 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
         }
 
     }
-
+    //processFinished is called when a different thread is finished in the sub
     @Override
     public void processFinish(WPlace place) {
 
