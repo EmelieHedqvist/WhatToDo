@@ -5,6 +5,8 @@ package com.emehed.emeliehedqvist.whattodo;
  */
 
 public class WPlace {
+
+    //This is the class for storing information of each found place
     String reference, name, address, rating;
     Double lat, lng;
 

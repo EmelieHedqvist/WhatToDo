@@ -76,17 +76,23 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
         }
 
     }
-    //processFinished is called when a different thread is finished in the sub
+    //processFinished is called when a different thread (away from the main UI thread)is finished in the sub class DownloadWebpage in the class PlaceFinder
+    //processFinished is called when a place is found and randomly selected from Google Places Web Services, via PlaceFinder
+    //then the information is stored in the variables in an instance of the class WPlace, which is sent to processFinished as in parameter
     @Override
     public void processFinish(WPlace place) {
 
-
+            //First, a check is done to see if PlaceFinder could find information about a place
         if(place!=null) {
+            //Sets the variable in this class to the WPlace instance sent in to this method, which contains information about the randomly selected place which was selected in PlaceFinder
         recommendedPlace = place;
+            //Sets lat and lng for the place found
         pLat = recommendedPlace.lat;
         pLong = recommendedPlace.lng;
+            //Call for a method that calculates the distans in km between the user and the place
         calcDist();
 
+            //Presents information for the user
         name = (TextView)findViewById(R.id.name);
         name.setText(recommendedPlace.name);
 
@@ -100,22 +106,26 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
         dist.setText(Double.toString(distance) + " km");
 
         }
+        //If no place information was found, null was sent, and the user is sent to the 'no places found' view
         else  {
+
             Intent i = new Intent(getApplicationContext(), NoResultActivity.class);
             startActivity(i);
         }
     }
-
+        //This method starts the map view, and it is called when the user presses the map button when a place is presented
     public void mapView(View view) {
         Intent m = new Intent(getApplicationContext(), MapsActivity.class);
         String lat = Double.toString(pLat);
         String lng = Double.toString(pLong);
         String name = recommendedPlace.name;
         String address = recommendedPlace.address;
+        //An string array is used to send information via the intent, for place alias and address and lat and lng
         String[] list = new String[]{lat,lng, name, address};
         m.putExtra("pos",list);
         startActivity(m);
     }
+    //This method calculates the distance between a place and the users position and stores the information in the double variable 'distance' which is used to present the distance for the user
     public void calcDist(){
         Location myLocation = new Location("MyLocation");
 
@@ -149,11 +159,12 @@ public class DisplayActivity extends Activity implements AsyncResponse, Location
         locationManager.requestLocationUpdates(provider, 20000, 0, this);
     }
     @Override
+    //This is used by the location listener to update lat and lng when the user changes location
     public void onLocationChanged(Location location) {
         latitude = location.getLatitude();
         longitude = location.getLongitude();
     }
-
+    //Methods below have to be implemented when implementing LocationListener, but they are not used by the WhatToDo App
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
 

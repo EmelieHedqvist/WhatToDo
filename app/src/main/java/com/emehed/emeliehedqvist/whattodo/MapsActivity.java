@@ -17,12 +17,14 @@ public class MapsActivity extends Activity implements OnMapReadyCallback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Code from Google to set up a map
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         Intent intent = getIntent();
+        //String array received to set lat, lng and present information about place alias and address
         String[] pos = intent.getStringArrayExtra("pos");
         lat = Double.parseDouble(pos[0]);
         lng = Double.parseDouble(pos[1]);
@@ -35,13 +37,13 @@ public class MapsActivity extends Activity implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap map) {
-        LatLng pos = new LatLng(lat, lng);
 
+        LatLng pos = new LatLng(lat, lng);
 
         map.setMyLocationEnabled(true);
 
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(pos, 13));
-
+        //Puts a marker on the map on the found place location, presenting place alias and address
         map.addMarker(new MarkerOptions()
                 .title(name)
                 .snippet(address)

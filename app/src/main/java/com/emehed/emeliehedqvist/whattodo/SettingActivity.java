@@ -18,15 +18,17 @@ public class SettingActivity extends Activity implements SeekBar.OnSeekBarChange
     private TextView tv;
 
 
-
+    //This class sets up a slider for the user to choose search radius
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+        //This is to set up the slider
         sb = (SeekBar)findViewById(R.id.seekBar);
         sb.setOnSeekBarChangeListener(this);
         SharedPreferences settings = getSharedPreferences("values",
                 Context.MODE_PRIVATE);
+        //Pre set radius is 1000 m
         int radius = settings.getInt("radius", 1000);
         sb.setProgress(radius);
         this.rangeValue = radius;
@@ -79,6 +81,7 @@ public class SettingActivity extends Activity implements SeekBar.OnSeekBarChange
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
+        //When the slider is released, the user is sent back to the main view
         rangeValue = rangeValue;
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
